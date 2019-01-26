@@ -1,0 +1,24 @@
+
+<div class="container">
+  
+  <input type="text" [(ngModel)]="model" />
+
+<ng-template #t let-item="item">
+  {{ item.first_name }} {{ item.last_name }}
+</ng-template>
+
+<ax-tree [axData]="data" 
+(axSelect)="select($event)" 
+[axSearch]= "search"
+[axSearchValue]="model" 
+[axTitle]="'first_name'" 
+[axId]="'id'" 
+[axSelectable]="false"
+[axDragDrop]="true"
+[axCollectionItem]="'items'" 
+(axSelection)="selected($event)"
+
+[axTemplate]="t">
+</ax-tree>
+
+</div>

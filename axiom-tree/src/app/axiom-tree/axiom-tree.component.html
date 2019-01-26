@@ -1,0 +1,22 @@
+
+<ul>
+  <li *ngFor="let item of data;let index = index" 
+  ax-tree-node 
+  [axItem]="item" 
+  [axTitle]="axTitle" 
+  [axCollectionItem]="axCollectionItem"
+  (axSelect) = "selectHandler($event)"
+  [axSearchValue] = "axSearchValue"
+  [axSearch] = "axSearch"
+  [axSelectable] = "axSelectable"
+  [axId]="axId" 
+  [axTemplate]="axTemplate"
+  [axDragDrop]="axDragDrop"
+  [axAsync]="axAsync"
+  [parent]="data"
+  [axLeaf]="axLeaf"
+  [axAsyncReader]="axAsyncReader"
+  (selection)="selectionHandler($event)">
+
+  </li>
+</ul>
