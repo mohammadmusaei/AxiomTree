@@ -1,11 +1,11 @@
 {
   "name": "axiom-ngx-tree",
-  "version": "0.0.1",
+  "version": "0.0.8",
   "description": "A tree component for angular, support nested object,async data,instant search,...",
   "author": "Mohammad Musaei",
   "repository": {
     "type": "git",
-     "url": "https://github.com/mohammadmusaei/AxiomTree.git"
+    "url": "https://github.com/mohammadmusaei/AxiomTree.git"
   },
   "keywords": [
     "angular",

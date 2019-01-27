@@ -1,0 +1,79 @@
+
+@import "spinner.scss";
+@import "colors.scss";
+@import "animations.scss";
+
+$indent : 20px;
+$indicator-size : 16px;
+
+[hidden] {
+  display: none !important;
+}
+
+.ax-tree{
+  .ax-tree-node-highlighter{
+    color: $danger-color;
+    background: #FFFDE7;
+  }
+  ul{
+    display: block;
+    list-style: none;
+    position: relative;
+    padding: 0;
+    margin: 0;
+    >li{
+        display: block;
+        position: relative;
+        padding: 0;
+        margin: 0;
+        width: fit-content;
+        cursor: pointer;
+        transition:background-color .1s ease-in;
+        >ul{
+          margin-left: $indent;
+          @include swing-in-top-fwd(.8s);
+        }
+        >.ax-tree-spinner{
+          @include ax-spinner($shadow:rgba(5,5,5,.1),$size:12px,$border:2px);
+          vertical-align: middle;
+          margin: 0;
+          padding: 0;
+        }
+        >.ax-tree-indicator,.ax-drop-indicator{
+          height: $indicator-size;
+          width: $indicator-size;
+          position: relative;
+          display: inline-block;
+          margin: 0;
+          vertical-align: middle;
+          transition: transform .3s;
+        }
+        >.ax-tree-indicator.open{
+          transform: rotate(90deg);
+        }
+        >.ax-tree-node-value{
+          position: relative;
+          padding: 2px 3px;
+          margin: 0 3px;
+          display: inline-block;
+          vertical-align: middle;
+          color: #777;
+        }
+        >.ax-tree-node-select{
+          vertical-align: middle;
+          display: inline-block;
+        }
+        .ax-tree-node-value:focus{
+          outline: 1px solid $info-color;
+        }
+    }
+    >li:hover{
+      >.ax-tree-node-value{
+        color: #333;
+      }
+    }
+    >li.dragover-node{
+      background-color: #eee;
+    }
+  }
+}

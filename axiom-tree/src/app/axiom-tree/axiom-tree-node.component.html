@@ -1,54 +1,31 @@
-
-
 <i class="ax-tree-indicator" [ngClass]="{ 'open' : opened}" (click)="click($event)">
-    <svg *ngIf="hasChild" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z"/></svg>
+  <svg height="16" width="16" *ngIf="hasChild" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+    <path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z" /></svg>
 </i>
 
-<input *ngIf="axSelectable" class="ax-tree-node-select" type="checkbox" 
-[(ngModel)]="selected" 
-(ngModelChange)="selectedChange($event)" >
+<input *ngIf="axSelectable" class="ax-tree-node-select" type="checkbox" [(ngModel)]="selected" (ngModelChange)="selectedChange($event)">
 
-<div class="ax-tree-node-value" 
-#nodeValue 
-(click)="select($event)" 
-(drop)="drop($event)"
-(dragover)="allowDrop($event)"
-(dragleave)="dragLeave($event)"
-[draggable]="axDragDrop"
-(dragend)="dragEnd($event,axItem)"
-(dragstart)="drag($event,axItem)"
-tabindex="0">
-    <ng-container *ngIf="!axTemplate">
-        {{ axItem[axTitle] }}
-    </ng-container>
-    
-    <ng-container *ngTemplateOutlet="axTemplate;context:ctx">
-    </ng-container>
+<div class="ax-tree-node-value" #nodeValue (click)="select($event)" (drop)="drop($event)" (dragover)="allowDrop($event)"
+  (dragleave)="dragLeave($event)" [draggable]="axDragDrop" (dragend)="dragEnd($event,axItem)" (dragstart)="drag($event,axItem)"
+  tabindex="0">
+  <ng-container *ngIf="!axTemplate">
+    {{ axItem[axTitle] }}
+  </ng-container>
+
+  <ng-container *ngTemplateOutlet="axTemplate;context:ctx">
+  </ng-container>
 </div>
 
 <div class="ax-tree-spinner" *ngIf="loading"></div>
 
 <ng-container *ngIf="hasChild">
-    <ul [hidden]="!opened">
-        <li *ngFor="let item of axItem[axCollectionItem];let index = index;trackBy:trackBy" 
-        ax-tree-node 
-        [axItem]="item" 
-        [axTitle]="axTitle" 
-        [axCollectionItem]="axCollectionItem" 
-        (axSelect) = "selectHandler($event)"
-        [axSearchValue] = "axSearchValue"
-        [axSearch] = "axSearch"
-        (iFound) = "iFoundHandler($event)"
-        [axSelectable] = "axSelectable"
-        [axId]="axId" 
-        [axTemplate]="axTemplate"
-        [axDragDrop]="axDragDrop"
-        [axAsync]="axAsync"
-        [axAsyncReader]="axAsyncReader"
-        [axLeaf]="axLeaf"
-        [parent]="axItem"
-        (selection)="selectionHandler($event)">
-      
-        </li>
-      </ul>
+  <ul [hidden]="!opened">
+    <li *ngFor="let item of axItem[axCollectionItem];let index = index;trackBy:trackBy" ax-tree-node [axItem]="item"
+      [axTitle]="axTitle" [axCollectionItem]="axCollectionItem" (axSelect)="selectHandler($event)" [axSearchValue]="axSearchValue"
+      [axSearch]="axSearch" (iFound)="iFoundHandler($event)" [axSelectable]="axSelectable" [axId]="axId" [axTemplate]="axTemplate"
+      [axDragDrop]="axDragDrop" [axAsync]="axAsync" [axAsyncReader]="axAsyncReader" [axLeaf]="axLeaf" [parent]="axItem"
+      (selection)="selectionHandler($event)">
+
+    </li>
+  </ul>
 </ng-container>

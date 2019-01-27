@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, TemplateRef } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, TemplateRef, ViewEncapsulation } from '@angular/core';
 import { Observable } from 'rxjs';
 
 export interface IAxiomTreeSearch {
@@ -29,6 +29,7 @@ export class AxiomTreeComponentCommon {
   selector: 'ax-tree',
   templateUrl: './axiom-tree.component.html',
   styleUrls: ['./axiom-tree.component.scss'],
+  encapsulation: ViewEncapsulation.None,
   host: {
     'class': 'ax-tree'
   }

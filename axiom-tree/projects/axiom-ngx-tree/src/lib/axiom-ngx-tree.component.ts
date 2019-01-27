@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, TemplateRef } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, TemplateRef, ViewEncapsulation } from '@angular/core';
 import { Observable } from 'rxjs';
 
 export interface IAxiomTreeSearch {
@@ -52,12 +52,13 @@ ax-ngx-tree-node
 </ul>
 
   `,
-  styleUrls:[
-    './axiom-ngx-tree.css'
+  styleUrls: [
+    './axiom-ngx-tree.scss'
   ],
   host: {
     'class': 'ax-tree'
-  }
+  },
+  encapsulation: ViewEncapsulation.None
 })
 export class AxiomNgxTreeComponent extends AxiomTreeComponentCommon implements OnInit {
 

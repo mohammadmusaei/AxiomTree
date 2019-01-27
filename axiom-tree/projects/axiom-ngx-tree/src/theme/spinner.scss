@@ -1,0 +1,22 @@
+
+@import "colors.scss";
+
+@mixin ax-spinner($size:20px,$shadow:rgba(255,255,255,.3),$main-color:$primary-color,$border:3px,$timing : .8s){ 
+  display: inline-block;
+  width: $size;
+  height: $size;
+  border: $border solid $shadow;
+  border-radius: 50%;
+  border-top-color: $main-color;
+  animation: spin $timing linear infinite;
+  -webkit-animation: spin $timing linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0); }
+    to { transform: rotate(360deg); }
+  }
+  @-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0); }
+    to { -webkit-transform: rotate(360deg); }
+  }

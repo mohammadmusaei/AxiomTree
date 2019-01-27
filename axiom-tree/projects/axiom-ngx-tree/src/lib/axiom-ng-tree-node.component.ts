@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges, ViewChild, ElementRef, Output, EventEmitter, Renderer2, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, ViewChild, ElementRef, Output, EventEmitter, Renderer2, ViewChildren, QueryList, ViewEncapsulation } from '@angular/core';
 import { AxiomTreeComponentCommon, AxiomTreeSelectionHandlerEvent } from './axiom-ngx-tree.component';
 
-export enum AxiomTreeDragKey{
+export enum AxiomTreeDragKey {
   AxItem = "axItem"
 }
 
@@ -10,7 +10,7 @@ export enum AxiomTreeDragKey{
   template: `
   
 <i class="ax-tree-indicator" [ngClass]="{ 'open' : opened}" (click)="click($event)">
-<svg *ngIf="hasChild" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z"/></svg>
+<svg *ngIf="hasChild" height="16" width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z"/></svg>
 </i>
 
 <input *ngIf="axSelectable" class="ax-tree-node-select" type="checkbox" 
@@ -63,7 +63,8 @@ tabindex="0">
 </ng-container>
 
   `,
-  host : {
+  encapsulation: ViewEncapsulation.None,
+  host: {
     '[class.dragover-node]': 'dragover'
   }
 })
@@ -102,7 +103,7 @@ export class AxiomNgxTreeNodeComponent extends AxiomTreeComponentCommon implemen
     $event.preventDefault();
     $event.stopPropagation();
     this.opened = !this.opened;
-    if(this.opened && this.axAsync){
+    if (this.opened && this.axAsync) {
       this.readAsyncData();
     }
   }
@@ -133,38 +134,38 @@ export class AxiomNgxTreeNodeComponent extends AxiomTreeComponentCommon implemen
     this.selection.emit({ item: this.axItem, selected: selected });
   }
 
-  refreshHandler($event) : void{
+  refreshHandler($event): void {
     this.checkChildren();
   }
 
-  allowDrop($event : DragEvent) {
+  allowDrop($event: DragEvent) {
     this.dragover = true;
     $event.preventDefault();
   }
 
-  dragLeave($event : DragEvent){
+  dragLeave($event: DragEvent) {
     this.dragover = false;
   }
 
-  drag($event : DragEvent,item : any) {
-    if(!item) return;
+  drag($event: DragEvent, item: any) {
+    if (!item) return;
     $event.dataTransfer.setData(AxiomTreeDragKey.AxItem, JSON.stringify(item));
   }
 
-  dragEnd($event : DragEvent,item : any) {
-    if(!item) return;
-    var index = (this.parent[this.axCollectionItem] || this.parent).findIndex(i=>i[this.axId] === item[this.axId]);
-    if(index >= 0){
-      (this.parent[this.axCollectionItem] || this.parent).splice(index,1);
+  dragEnd($event: DragEvent, item: any) {
+    if (!item) return;
+    var index = (this.parent[this.axCollectionItem] || this.parent).findIndex(i => i[this.axId] === item[this.axId]);
+    if (index >= 0) {
+      (this.parent[this.axCollectionItem] || this.parent).splice(index, 1);
       this.refresh.emit();
     }
   }
 
-  drop($event : any) {
+  drop($event: any) {
     $event.preventDefault();
     const data = JSON.parse($event.dataTransfer.getData(AxiomTreeDragKey.AxItem));
-    if(data[this.axId] === this.axItem[this.axId]) return;
-    if(!Array.isArray(this.axItem[this.axCollectionItem])){
+    if (data[this.axId] === this.axItem[this.axId]) return;
+    if (!Array.isArray(this.axItem[this.axCollectionItem])) {
       this.axItem[this.axCollectionItem] = [];
     }
     this.axItem[this.axCollectionItem].push(data);
@@ -172,26 +173,26 @@ export class AxiomNgxTreeNodeComponent extends AxiomTreeComponentCommon implemen
     this.dragover = false;
   }
 
-  trackBy(index:number,item : any) {
+  trackBy(index: number, item: any) {
     return item[this.axId];
   }
 
-  private readAsyncData() : void{
-    if(typeof(this.axAsyncReader) === "function"){
+  private readAsyncData(): void {
+    if (typeof (this.axAsyncReader) === "function") {
       this.loading = true;
-      this.axAsyncReader(this.axItem).subscribe(nodes=>{
+      this.axAsyncReader(this.axItem).subscribe(nodes => {
         this.axItem[this.axCollectionItem] = nodes;
         this.loading = false;
-      },error=>{
+      }, error => {
         this.loading = false;
         console.error("Error while getting async data!");
       });
     }
   }
 
-  private checkForHighlight(changes  : SimpleChanges) : void{
+  private checkForHighlight(changes: SimpleChanges): void {
     this.highlight(false);
-    if(!changes.axSearchValue) return;
+    if (!changes.axSearchValue) return;
     var value = changes.axSearchValue.currentValue;
     if (!value || value === "") {
       this.opened = false;
@@ -211,9 +212,9 @@ export class AxiomNgxTreeNodeComponent extends AxiomTreeComponentCommon implemen
     }
   }
 
-  private checkChildren() : void{
+  private checkChildren(): void {
     this.hasChild = Array.isArray(this.axItem[this.axCollectionItem]) && this.axItem[this.axCollectionItem].length > 0;
-    if(this.axAsync){
+    if (this.axAsync) {
       this.hasChild = this.hasChild || !(this.axItem[this.axLeaf] && this.axItem[this.axLeaf] === false);
     }
   }
@@ -223,14 +224,14 @@ export class AxiomNgxTreeNodeComponent extends AxiomTreeComponentCommon implemen
   }
 
   private checkAllChildrenSelected(): "none" | "all" | "some" {
-    var length =  this.children.filter(c => c.selected).length;
-    if(length > 0 && length < this.children.length){
+    var length = this.children.filter(c => c.selected).length;
+    if (length > 0 && length < this.children.length) {
       return "some";
     }
-    else if (length === this.children.length){
+    else if (length === this.children.length) {
       return "all";
     }
-    else{
+    else {
       return "none";
     }
   }
