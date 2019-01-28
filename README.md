@@ -2,6 +2,6 @@
 
 `npm install axiom-ngx-tree@latest`
 
-# Online Demo
+## Online Demo ##
 
 [Axiom ngx-tree stackblitx online demo](https://axiom-ngx-tree.stackblitz.io)
