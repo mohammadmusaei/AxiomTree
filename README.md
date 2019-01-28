@@ -1,4 +1,4 @@
-# AxiomTree
+# Axiom Tree
 
 `npm install axiom-ngx-tree@latest`
 
