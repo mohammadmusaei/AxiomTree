@@ -29,3 +29,8 @@
 | ------ | ------ |
 | axSelection | Emit an array containing selected nodes |
 | axSelect | Emit a object refers to current node |
+
+
+## License
+
+[MIT](http://opensource.org/licenses/MIT)
