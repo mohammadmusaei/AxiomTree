@@ -1,10 +1,82 @@
 # Axiom Tree
 
-`npm install axiom-ngx-tree@latest`
 
 ### Online Demo
 
 [Axiom ngx-tree stackblitx online demo](https://stackblitz.com/edit/axiom-ngx-tree)
+
+### Installation
+
+##### Install component package from npm :
+
+`npm install axiom-ngx-tree`
+
+##### Import component module :
+
+```typescript
+import { AxiomNgxTreeModule } from 'axiom-ngx-tree';
+
+...
+
+@NgModule({
+  imports: [
+    BrowserModule,
+    AxiomNgxTreeModule,
+  ], 
+  declarations: [
+    AppComponent
+  ],
+  bootstrap: [AppComponent]
+})
+
+...
+
+```
+
+### Usage
+
+```html
+
+<ax-ngx-tree [axData]="data" 
+    (axSelect)="select($event)" 
+    [axSearch]= "search"
+    [axSearchValue]="model" 
+    [axTitle]="'country'" 
+    [axId]="'id'" 
+    [axSelectable]="true"
+    [axDragDrop]="true"
+    [axCollectionItem]="'items'" 
+    (axSelection)="selected($event)"
+    [axTemplate]="t">
+</ax-ngx-tree>
+
+```
+
+##### Use custom templates for nodes
+
+First, Create a template tag then use `item` property to access node data
+
+```html
+
+<ng-template #t let-item="item">
+    {{ item.first_name }} {{ item.last_name }}
+</ng-template>
+
+```
+
+Then pass custom template reference to `[axTemplate]` input parameter
+
+```html
+
+[axTemplate]="t"
+
+```
+
+### Drag and drop support
+
+For add drag and drop feature just set `[axDragDrop]` property value to true
+
+![Alt Text](https://media.giphy.com/media/iOyDWDp3aKvHwPBxMU/giphy.gif)
 
 ### @Input() Params
 
@@ -29,3 +101,8 @@
 | ------ | ------ |
 | axSelection | Emit an array containing selected nodes |
 | axSelect | Emit a object refers to current node |
+
+
+## License
+
+[MIT](http://opensource.org/licenses/MIT)
