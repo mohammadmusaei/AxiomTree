@@ -3,11 +3,11 @@
 
 ### Online Demo
 
-[Axiom ngx-tree stackblitx online demo](https://stackblitz.com/edit/axiom-ngx-tree)
+[Usage Demo](http://app.musaei.me/angular/tree/)
 
 ### Stackblitz Demo
 
-[Edit on stackblitz](https://stackblitz.com/edit/axiom-ngx-tree)
+[Edit demo on stackblitz](https://stackblitz.com/edit/axiom-ngx-tree)
 
 ### Installation
 
