@@ -1,5 +1,10 @@
 # Axiom Tree
 
+
+### Online Demo
+
+[Axiom ngx-tree stackblitx online demo](https://stackblitz.com/edit/axiom-ngx-tree)
+
 ### Installation
 
 ##### Install component package from npm :
@@ -27,10 +32,6 @@ import { AxiomNgxTreeModule } from 'axiom-ngx-tree';
 ...
 
 ```
-
-### Online Demo
-
-[Axiom ngx-tree stackblitx online demo](https://stackblitz.com/edit/axiom-ngx-tree)
 
 ### @Input() Params
 
