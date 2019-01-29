@@ -64,13 +64,19 @@ First, Create a template tag then use `item` property to access node data
 
 ```
 
-Then pass custom template reference to [axTemplate] input parameter
+Then pass custom template reference to `[axTemplate]` input parameter
 
 ```html
 
 [axTemplate]="t"
 
 ```
+
+### Drag and drop support
+
+For add drag and drop feature just set `[axDragDrop]` property value to true
+
+![Alt Text](https://media.giphy.com/media/iOyDWDp3aKvHwPBxMU/giphy.gif)
 
 ### @Input() Params
 
