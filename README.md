@@ -1,6 +1,32 @@
 # Axiom Tree
 
+### Installation
+
+1. Install component package from npm :
+
 `npm install axiom-ngx-tree@latest`
+
+2. Import component module :
+
+```typescript
+import { AxiomNgxTreeModule } from 'axiom-ngx-tree';
+
+...
+
+@NgModule({
+  imports: [
+    BrowserModule,
+    AxiomNgxTreeModule,
+  ], 
+  declarations: [
+    AppComponent
+  ],
+  bootstrap: [AppComponent]
+})
+
+...
+
+```
 
 ### Online Demo
 
