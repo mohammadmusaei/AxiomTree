@@ -33,6 +33,45 @@ import { AxiomNgxTreeModule } from 'axiom-ngx-tree';
 
 ```
 
+### Usage
+
+```html
+
+<ax-ngx-tree [axData]="data" 
+    (axSelect)="select($event)" 
+    [axSearch]= "search"
+    [axSearchValue]="model" 
+    [axTitle]="'country'" 
+    [axId]="'id'" 
+    [axSelectable]="true"
+    [axDragDrop]="true"
+    [axCollectionItem]="'items'" 
+    (axSelection)="selected($event)"
+    [axTemplate]="t">
+</ax-ngx-tree>
+
+```
+
+##### Use custom templates for nodes
+
+First, Create a template tag then use `item` property to access node data
+
+```html
+
+<ng-template #t let-item="item">
+    {{ item.first_name }} {{ item.last_name }}
+</ng-template>
+
+```
+
+Then pass custom template reference to [axTemplate] input parameter
+
+```html
+
+[axTemplate]="t"
+
+```
+
 ### @Input() Params
 
 | Name | Usage |
