@@ -13,7 +13,7 @@
 
 ##### Install component package from npm :
 
-`npm install axiom-ngx-tree`
+`$npm install axiom-ngx-tree`
 
 ##### Import component module :
 
