@@ -5,6 +5,10 @@
 
 [Axiom ngx-tree stackblitx online demo](https://stackblitz.com/edit/axiom-ngx-tree)
 
+### Stackblitz Demo
+
+[Edit on stackblitz](https://stackblitz.com/edit/axiom-ngx-tree)
+
 ### Installation
 
 ##### Install component package from npm :
