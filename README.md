@@ -2,11 +2,11 @@
 
 ### Installation
 
-1. Install component package from npm :
+##### Install component package from npm :
 
 `npm install axiom-ngx-tree@latest`
 
-2. Import component module :
+##### Import component module :
 
 ```typescript
 import { AxiomNgxTreeModule } from 'axiom-ngx-tree';
