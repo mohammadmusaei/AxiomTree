@@ -45,7 +45,7 @@ $indicator-size : 16px;
           position: relative;
           display: inline-block;
           margin: 0;
-          vertical-align: middle;
+          vertical-align: unset;
           transition: transform .3s;
         }
         >.ax-tree-indicator.open{
