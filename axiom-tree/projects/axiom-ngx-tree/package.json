@@ -1,6 +1,6 @@
 {
   "name": "axiom-ngx-tree",
-  "version": "0.0.8",
+  "version": "1.0.0",
   "description": "A tree component for angular, support nested object,async data,instant search,...",
   "author": "Mohammad Musaei",
   "repository": {
