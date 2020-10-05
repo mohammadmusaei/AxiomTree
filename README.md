@@ -3,7 +3,7 @@
 
 ### Online Demo
 
-[Usage Demo](http://app.musaei.me/angular/tree/)
+[Usage Demo](https://axiom-ngx-tree.stackblitz.io)
 
 ### Stackblitz Demo
 
